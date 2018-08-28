@@ -23,14 +23,16 @@ public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
         super(); this.clazz = clazz;
     }
 
-        @Override public byte[] serialize(T t) throws SerializationException {
+        @Override
+        public byte[] serialize(T t) throws SerializationException {
         if (t == null) {
             return new byte[0];
         }
         return JSON.toJSONString(t, SerializerFeature.WriteClassName).getBytes(DEFAULT_CHARSET);
     }
 
-        @Override public T deserialize(byte[] bytes) throws SerializationException {
+        @Override
+        public T deserialize(byte[] bytes) throws SerializationException {
         if (bytes == null || bytes.length <= 0) {
             return null;
         }
