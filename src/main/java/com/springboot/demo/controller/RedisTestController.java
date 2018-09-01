@@ -11,6 +11,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 /**
  * @ClassName: RedisTestController
  * @Auther: zhangyingqi
@@ -23,6 +26,12 @@ public class RedisTestController extends BaseController{
 
     @Autowired
     RedisUtil redisUtil;
+
+    @RequestMapping(value="/list")
+    public String view(HttpServletRequest request, String name){
+        logger.info("返回列表页面");
+        return "/demoPage/listPage/"+ name;
+    }
 
     /**
      * @auther: zhangyingqi
